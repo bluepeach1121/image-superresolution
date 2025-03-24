@@ -1,15 +1,15 @@
-# Super-Resolution Neural Network: Technical Overview and Results
+# Super-Resolution Neural Network: Technical Overview and Results (Mistake Noticed)! changes and corrections coming soon!.
 
 ## **Overview**
 This project implements a single-branch convolutional neural network (CNN) for **image super-resolution (SR)**. The goal is to upscale low-resolution (LR) images to high-resolution (HR) images. The network was trained and tested on the **DIV2K dataset**. 
 
-The following papers were reference:
+The following papers were references:
   
   `https://arxiv.org/abs/1511.04587` --> Accurate Image Super-Resolution Using Very Deep Convolutional Networks, and
   `https://arxiv.org/abs/1501.00092` --> Image Super-Resolution Using Deep Convolutional Networks
 
 
-The implemented model achieves **higher PSNR values** than those reported in the baseline papers, demonstrating the effectiveness of our approach. Im quite skeptical that its this good.
+I noticed that the PSNR was too high and I went back into the code and found a few issues with the image comparison. corrections are coming soon!
 
 ---
 
@@ -56,25 +56,6 @@ The network is composed of the following:
   - Testing: 15%
 
 ---
-
-## **Results**
-
-### **1. Performance Metrics**
-- **Training Loss**: Reduced significantly across epochs, indicating stable optimization.
-- **Test Metrics**:
-  - **PSNR**: Achieved a peak value of **48.9 dB**, higher than the baseline paper's reported results.
-  - **SSIM**: Achieved a value of **0.998**, demonstrating near-perfect structural fidelity.
-
-### **2. Comparison to Baseline**
-The model outperforms traditional bicubic interpolation and achieves better PSNR and SSIM values compared to the referenced paper, highlighting the efficiency of the residual learning approach and the simplicity of the architecture.
-
----
-
-## **Visualization**
-- **PSNR Plot**:
-  - A line plot of PSNR over epochs shows consistent improvements during training.
----
-
 ## **Strengths**
 1. **Lightweight Architecture**:
    - Achieves high performance with fewer parameters (~335K), making it computationally efficient.
@@ -82,17 +63,6 @@ The model outperforms traditional bicubic interpolation and achieves better PSNR
    - Stabilizes training and ensures finer detail reconstruction.
 3. **High PSNR and SSIM**:
    - Exceeds baseline performance, demonstrating superior reconstruction quality.
-
----
-
-## **Limitations**
-1. **Fixed Output Resolution**:
-   - The model is hardcoded for specific resolutions (e.g., \(224 	imes 224\)).
-   - Cannot handle variable sizes.
-2. **Single-Scale Processing**:
-   - Processes a single scale (e.g., \(x4\)) at a time, limiting its ability to integrate multi-scale features.
-3. **Computational Load for Larger Outputs**:
-   - Although lightweight, upscaling large images (e.g., \(896 	imes 896\)) requires significant computational resources.
 
 ---
 
